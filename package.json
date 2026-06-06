@@ -1,0 +1,26 @@
+{
+  "name": "textile-lot-serial-management",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MERN stack textile lot and serial number management system.",
+  "scripts": {
+    "start": "npm --prefix backend start",
+    "postinstall": "npm --prefix backend install --omit=dev",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "start:backend": "npm --prefix backend start",
+    "install:frontend": "npm --prefix frontend install"
+  },
+  "engines": {
+    "node": "20.x",
+    "npm": "10.x"
+  },
+  "keywords": [
+    "mern",
+    "textile",
+    "serial-management",
+    "traceability"
+  ],
+  "author": "",
+  "license": "MIT"
+}
