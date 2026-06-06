@@ -90,8 +90,10 @@ Set these Heroku config vars:
 
 ```bash
 heroku config:set MONGO_URI="your-mongodb-atlas-uri"
-heroku config:set CLIENT_ORIGIN="your-frontend-url"
+heroku config:set CLIENT_ORIGIN="https://your-netlify-site.netlify.app"
 ```
+
+Use the frontend origin only, without a trailing slash. Multiple origins can be comma-separated.
 
 Deploy from the repository root. Heroku will use the root `package.json` and run the backend from `backend/`.
 

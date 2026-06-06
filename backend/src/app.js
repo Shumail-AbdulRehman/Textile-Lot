@@ -10,11 +10,24 @@ import serialRoutes from './routes/serial.routes.js';
 
 const app = express();
 
+const normalizeOrigin = (origin) => origin.replace(/\/+$/, '');
+
+const allowedOrigins = (process.env.CLIENT_ORIGIN || 'http://localhost:5173')
+  .split(',')
+  .map((origin) => normalizeOrigin(origin.trim()))
+  .filter(Boolean);
+
 app.use(helmet());
 app.use(compression());
 app.use(
   cors({
-    origin: process.env.CLIENT_ORIGIN || 'http://localhost:5173'
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(normalizeOrigin(origin))) {
+        return callback(null, true);
+      }
+
+      return callback(new Error(`CORS blocked for origin: ${origin}`));
+    }
   })
 );
 app.use(express.json({ limit: '1mb' }));
